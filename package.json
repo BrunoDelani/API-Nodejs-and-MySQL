@@ -4,6 +4,7 @@
   "description": "API com Node e MySQL",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./app/index.js localhost 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/BrunoDelani/APINodeMySQL#readme",
   "dependencies": {
     "dotenv": "^16.0.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16"
   }
 }

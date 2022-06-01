@@ -4,36 +4,38 @@ async function connect() {
 
     const mysql = require("mysql2/promise");
     const connection = await mysql.createConnection(`mysql://root:1234@localhost:3306/nodejs`);
-    console.log("Conectado no MySQL!");
+    console.log("Connected to MySQL!");
     global.connection = connection;
     return connection;
 }
 
-async function selectClients() {
-    const conn = await connect();
-    const [rows] = await conn.query('SELECT * FROM cliente;')
-    return rows;
-}
+module.exports = { connect }
 
-async function insertClient(Client) {
-    const conn = await connect();
-    const sql = 'INSERT INTO cliente(nome,email,senha) VALUES (?,?,?);';
-    const values = [Client.nome, Client.email, Client.senha];
-    return await conn.query(sql, values);
-}
+// EXAMPLES FOR SQL QUERY
+//
+// async function selectClients() {
+//     const conn = await connect();
+//     const [rows] = await conn.query('SELECT * FROM client;')
+//     return rows;
+// }
 
-async function updateClient(Client) {
-    const conn = await connect();
-    const sql = 'UPDATE cliente SET nome=?, email=? , senha=? WHERE id=?';
-    const values = [Client.nome, Client.email, Client.senha, Client.id];
-    return await conn.query(sql, values);
-}
+// async function insertClient(Client) {
+//     const conn = await connect();
+//     const sql = 'INSERT INTO client(name,mail,password) VALUES (?,?,?);';
+//     const values = [Client.name, Client.mail, Client.password];
+//     return await conn.query(sql, values);
+// }
 
-async function deleteClient(Client) {
-    const conn = await connect();
-    const sql = 'DELETE FROM cliente WHERE id=?';
-    const values = [Client.id];
-    return await conn.query(sql, values);
-}
+// async function updateClient(Client) {
+//     const conn = await connect();
+//     const sql = 'UPDATE client SET name=?, mail=? , password=? WHERE id=?';
+//     const values = [Client.name, Client.mail, Client.password, Client.id];
+//     return await conn.query(sql, values);
+// }
 
-module.exports = { selectClients, insertClient, updateClient, deleteClient }
+// async function deleteClient(Client) {
+//     const conn = await connect();
+//     const sql = 'DELETE FROM client WHERE id=?';
+//     const values = [Client.id];
+//     return await conn.query(sql, values);
+// }

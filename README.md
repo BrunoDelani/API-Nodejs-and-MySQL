@@ -1,5 +1,11 @@
 # APINodeMySQL
 API com Node e MySQL
 
-# Dependencias
-npm install mysql2 dotenv
+# Dependencies
+npm install mysql2 dotenv nodemon
+
+# Script
+Add start": "nodemon ./index.js localhost 3000"
+
+# Database
+Localhost MySQL
